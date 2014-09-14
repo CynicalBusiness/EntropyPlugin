@@ -1,0 +1,14 @@
+name: EntropyPlugin
+version: A1.00.00
+main: me.capit.entropy.EntropyMain
+
+author: 'Wehttam664 (NukesForKids)'
+authors: ['Wehttam664', 'callum2904', 'willynillyskin']
+
+prefix: ECore
+depend: 
+  - DataShuttleMC
+  
+commands:
+
+permissions:
