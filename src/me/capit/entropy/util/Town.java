@@ -1,6 +1,8 @@
 package me.capit.entropy.util;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import me.capit.entropy.EntropyMain;
@@ -13,6 +15,8 @@ public class Town implements Serializable {
 	
 	private int daysOfInactivityLeft = 7;
 	private String name;
+	
+	private List<Structure> structures = new ArrayList<Structure>();
 	
 	public Town(EntropyMain plugin, UUID owner, String name){
 		this.plugin = plugin;
@@ -38,6 +42,14 @@ public class Town implements Serializable {
 	
 	public void setInactiveDays(int days){
 		daysOfInactivityLeft = days;
+	}
+	
+	public void addStructure(Structure structure){
+		structures.add(structure);
+	}
+	
+	public List<Structure> getStructures(){
+		return structures;
 	}
 	
 }
