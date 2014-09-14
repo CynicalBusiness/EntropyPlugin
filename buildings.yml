@@ -1,0 +1,7 @@
+buildings:
+  House_Small_1:
+    schematic: housesmall1
+    dimension: 7x7
+    resources:
+      - 'log:1, 10'
+      - 'woodfence, 10'
