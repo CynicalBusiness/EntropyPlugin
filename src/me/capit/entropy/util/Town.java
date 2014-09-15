@@ -14,14 +14,18 @@ public class Town implements Serializable {
 	private final UUID owner;
 	
 	private int daysOfInactivityLeft = 7;
+	private int storageUsed;
 	private String name;
 	
 	private List<Structure> structures = new ArrayList<Structure>();
 	
-	public Town(EntropyMain plugin, UUID owner, String name){
+	private ArrayList<UUID> players = new ArrayList<UUID>();
+	
+	public Town(EntropyMain plugin, UUID owner, String name, int storageUsed){
 		this.plugin = plugin;
 		this.owner = owner;
 		this.name = name;
+		this.storageUsed = storageUsed;
 	}
 	
 	public String getName(){
@@ -30,6 +34,14 @@ public class Town implements Serializable {
 	
 	public UUID getOwner(){
 		return owner;
+	}
+	
+	public int getStorageUsed(){
+		return storageUsed;
+	}
+	
+	public void setStorageUsed(int amount){
+		storageUsed = amount;
 	}
 	
 	public void inactiveDay(){
@@ -48,8 +60,24 @@ public class Town implements Serializable {
 		structures.add(structure);
 	}
 	
+	public void removeStructure(Structure structure){
+		structures.remove(structure);
+	}
+	
 	public List<Structure> getStructures(){
 		return structures;
+	}
+	
+	public void addPlayer(UUID uuid){
+		players.add(uuid);
+	}
+	
+	public void removePlayer(UUID uuid){
+		players.remove(uuid);
+	}
+	
+	public ArrayList<UUID> getPlayers(){
+		return players;
 	}
 	
 }
