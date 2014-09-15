@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 import me.capit.ds_mc.DSMCMain;
@@ -24,6 +25,15 @@ public class EntropyMain extends JavaPlugin {
 	public static Town getTownByID(int id){
 		for (Town t : towns){
 			if (t.getID()==id){
+				return t;
+			}
+		}
+		return null;
+	}
+	
+	public static Town getTownByOwner(UUID owner){
+		for (Town t : towns){
+			if (t.getOwner().equals(owner)){
 				return t;
 			}
 		}
