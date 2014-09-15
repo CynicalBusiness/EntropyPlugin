@@ -17,25 +17,16 @@ public class Town implements Serializable {
 	private int storageUsed;
 	private String name;
 	
+	// The List object is more adaptive to the situation and consumes less activation memory than ArrayList.
 	private List<Structure> structures = new ArrayList<Structure>();
+	private List<UUID> players = new ArrayList<UUID>();
 	
-	private ArrayList<UUID> players = new ArrayList<UUID>();
-	
+	// What is storageUsed for?
 	public Town(EntropyMain plugin, UUID owner, String name, int storageUsed){
 		this.plugin = plugin;
 		this.owner = owner;
 		this.name = name;
 		this.storageUsed = storageUsed;
-	}
-	
-	
-	//Added this for loading all infomation from the file.. Not sure if this is how you want it...
-	public Town(EntropyMain plugin, UUID owner, String name, int storageUsed, ArrayList<UUID> players){
-		this.plugin = plugin;
-		this.owner = owner;
-		this.name = name;
-		this.storageUsed = storageUsed;
-		this.players = players;
 	}
 	
 	public String getName(){
@@ -86,7 +77,7 @@ public class Town implements Serializable {
 		players.remove(uuid);
 	}
 	
-	public ArrayList<UUID> getPlayers(){
+	public List<UUID> getPlayers(){
 		return players;
 	}
 	
