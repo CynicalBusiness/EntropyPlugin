@@ -21,6 +21,15 @@ public class EntropyMain extends JavaPlugin {
 	
 	public static List<Town> towns = new ArrayList<Town>();
 	
+	public static Town getTownByID(int id){
+		for (Town t : towns){
+			if (t.getID()==id){
+				return t;
+			}
+		}
+		return null;
+	}
+	
 	@Override
 	public void onEnable(){
 		logger = this.getLogger();
