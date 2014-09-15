@@ -1,9 +1,11 @@
 buildings:
   Road_Dirt:
     schematic: road/dirt
-    bound: 5x5
-    road: false
+    boundWidth: 5
+    boundLength: 5
+    road: true
   House_Small_1:
     schematic: house/small/1 # Will load resource costs from schematic!
-    bound: 7x7
+    boundWidth: 7
+    boundLength: 9
     road: true
