@@ -12,10 +12,12 @@ public class Town implements Serializable {
 	final EntropyMain plugin;
 	
 	private final UUID owner;
+	private final int id;
 	
 	private int daysOfInactivityLeft = 7;
 	private int storageUsed;
 	private String name;
+	private boolean abandoned = false;
 	
 	// The List object is more adaptive to the situation and consumes less activation memory than ArrayList.
 	private List<Structure> structures = new ArrayList<Structure>();
@@ -27,6 +29,11 @@ public class Town implements Serializable {
 		this.owner = owner;
 		this.name = name;
 		this.storageUsed = storageUsed;
+		this.id = EntropyMain.towns.size();
+	}
+	
+	public int getID(){
+		return id;
 	}
 	
 	public String getName(){
@@ -79,6 +86,10 @@ public class Town implements Serializable {
 	
 	public List<UUID> getPlayers(){
 		return players;
+	}
+	
+	public boolean isAbandoned(){
+		return abandoned;
 	}
 	
 }
