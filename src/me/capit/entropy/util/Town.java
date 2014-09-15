@@ -28,6 +28,16 @@ public class Town implements Serializable {
 		this.storageUsed = storageUsed;
 	}
 	
+	
+	//Added this for loading all infomation from the file.. Not sure if this is how you want it...
+	public Town(EntropyMain plugin, UUID owner, String name, int storageUsed, ArrayList<UUID> players){
+		this.plugin = plugin;
+		this.owner = owner;
+		this.name = name;
+		this.storageUsed = storageUsed;
+		this.players = players;
+	}
+	
 	public String getName(){
 		return name;
 	}
