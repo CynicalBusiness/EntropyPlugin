@@ -15,7 +15,6 @@ public class Town implements Serializable {
 	private final int id;
 	
 	private int daysOfInactivityLeft = 7;
-	private int storageUsed;
 	private String name;
 	private boolean abandoned = false;
 	
@@ -23,12 +22,12 @@ public class Town implements Serializable {
 	private List<Structure> structures = new ArrayList<Structure>();
 	private List<UUID> players = new ArrayList<UUID>();
 	
-	// What is storageUsed for?
-	public Town(EntropyMain plugin, UUID owner, String name, int storageUsed){
+	// I removed it but it was going to be for how much storage each town has used within the building.
+	// But I think i know a better way of storing this.
+	public Town(EntropyMain plugin, UUID owner, String name){
 		this.plugin = plugin;
 		this.owner = owner;
 		this.name = name;
-		this.storageUsed = storageUsed;
 		this.id = EntropyMain.towns.size();
 	}
 	
@@ -42,14 +41,6 @@ public class Town implements Serializable {
 	
 	public UUID getOwner(){
 		return owner;
-	}
-	
-	public int getStorageUsed(){
-		return storageUsed;
-	}
-	
-	public void setStorageUsed(int amount){
-		storageUsed = amount;
 	}
 	
 	public void inactiveDay(){
