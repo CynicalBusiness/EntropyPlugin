@@ -22,8 +22,7 @@ public class Town implements Serializable {
 	private List<Structure> structures = new ArrayList<Structure>();
 	private List<UUID> players = new ArrayList<UUID>();
 	
-	// I removed it but it was going to be for how much storage each town has used within the building.
-	// But I think i know a better way of storing this.
+	// I removed it but it was going to be for how much storage each town has used.
 	public Town(EntropyMain plugin, UUID owner, String name){
 		this.plugin = plugin;
 		this.owner = owner;

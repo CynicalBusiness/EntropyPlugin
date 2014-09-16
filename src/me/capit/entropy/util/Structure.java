@@ -12,6 +12,7 @@ public abstract class Structure implements Serializable {
 	private final Location loc;
 	private final int townID;
 	
+	//Should we add the building tier here?
 	public Structure(StructureData data, Location loc, int townID){
 		this.data = data;
 		this.loc = loc;
