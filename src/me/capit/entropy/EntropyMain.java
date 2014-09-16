@@ -48,12 +48,22 @@ public class EntropyMain extends JavaPlugin {
 		logger.info("Loading utilities...");
 		util = new CoreUtil(this);
 		
-		// TODO
+		logger.info("Accessing disk...");
+		saveDefaultConfig();
+		loadData();
+		logger.info("  "+towns.size()+" towns loaded.");
+		
+		logger.info(DSMCMain.formFooter(EntropyMain.class));
 	}
 	
 	@Override
 	public void onDisable(){
+		logger.info(DSMCMain.formHeader(EntropyMain.class));
+		logger.info("Shutting down...");
+		logger.info("  Saving "+towns.size()+" towns...");
+		saveData();
 		
+		logger.info(DSMCMain.formFooter(EntropyMain.class));
 	}
 	
 	public File getDataFile(String name){
