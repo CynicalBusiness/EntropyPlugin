@@ -2,6 +2,7 @@ package me.capit.entropy;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public class Message {
 	
@@ -24,6 +25,12 @@ public class Message {
 	
 	public static void send(MessageLevel level, Player player, String message){
 		player.sendMessage(EntropyMain.PLUGIN_TAG+level.getColor()+ChatColor.BOLD+level.toString()+": "+level.getColor()+message);
+	}
+	
+	public static void sendAll(MessageLevel level, JavaPlugin plugin, String message){
+		for (Player p : plugin.getServer().getOnlinePlayers()){
+			send(level,p,message);
+		}
 	}
 	
 	public static void sendInfo(Player player, String message){
