@@ -8,10 +8,7 @@ authors: ['Wehttam664', 'callum2904', 'willynillyskin']
 prefix: ECore
 depend: 
   - DataShuttleMC
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 commands:
   city:
     description: 'Default Entropy Cities command.'
