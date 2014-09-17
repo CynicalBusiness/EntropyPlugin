@@ -1,6 +1,5 @@
 package me.capit.entropy.trading;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -30,15 +29,11 @@ public class TradeInventory {
 	}
 
 	public void addTradingItem(Player player, ItemStack stack) {
-		List<ItemStack> items = new ArrayList<ItemStack>();
-		items.add(stack);
-		trades.put(player.getName(), items);
+		
 	}
 
 	public void removeTradingItem(Player player, ItemStack stack) {
-		List<ItemStack> items = new ArrayList<ItemStack>();
-		items.remove(stack);
-		trades.put(player.getName(), items);
+		
 	}
 
 }

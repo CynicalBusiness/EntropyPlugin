@@ -4,8 +4,16 @@ import org.bukkit.entity.Player;
 
 public class Trade {
 	
-	public void createTrade(TradeInventory inv, Player player1, Player player2){
-		
+	private Player player1;
+	private Player player2;
+	private TradeInventory inv;
+	private CoreTrade trade;
+	
+	public void createTrade(CoreTrade trade, TradeInventory inv, Player player1, Player player2){
+		this.player1 = player1;
+		this.player2 = player2;
+		this.inv = inv;
+		this.trade = trade;
 	}
 	
 	public void completeTrade(){
@@ -13,8 +21,9 @@ public class Trade {
 	}
 	
 	public void cancelTrade(){
-		//Close inv, make sure player hasnt got the item in hand while closing which could be
-		//a possible dupe error.
+		trade.restoreInventory(player1);
+		trade.restoreInventory(player2);
+		inv.destory();
 	}
 
 }
