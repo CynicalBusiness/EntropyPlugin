@@ -5,16 +5,37 @@ import org.bukkit.entity.Player;
 
 public class Message {
 	
+	public enum MessageLevel{
+		INFO, ERROR, DEBUG, WARNING, HELP;
+		
+		public ChatColor getColor(){
+			switch(this){
+			case ERROR:
+				return ChatColor.RED;
+			case WARNING:
+				return ChatColor.YELLOW;
+			case HELP:
+				return ChatColor.GOLD;
+			default:
+				return ChatColor.WHITE;
+			}
+		}
+	}
+	
+	public static void send(MessageLevel level, Player player, String message){
+		player.sendMessage(EntropyMain.PLUGIN_TAG+level.getColor()+ChatColor.BOLD+level.toString()+": "+level.getColor()+message);
+	}
+	
+	public static void sendInfo(Player player, String message){
+		send(MessageLevel.INFO,player,message);
+	}
+	
 	public static void sendError(Player player, String message){
-		player.sendMessage(ChatColor.DARK_RED + "[ERROR] " + message);
+		send(MessageLevel.ERROR,player,message);
 	}
 	
 	public static void sendHelp(Player player, String message){
-		player.sendMessage(ChatColor.GOLD + "[Entropy] " + message);
+		send(MessageLevel.HELP,player,message);
 	}
 	
-	public static void sendWarning(Player player, String message){
-		player.sendMessage(ChatColor.YELLOW + "[Warning] " + message);
-	}
-
 }

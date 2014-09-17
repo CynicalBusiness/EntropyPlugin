@@ -14,14 +14,18 @@ import java.util.logging.Logger;
 import me.capit.ds_mc.DSMCMain;
 import me.capit.entropy.util.*;
 
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class EntropyMain extends JavaPlugin {
+	public static final ChatColor PLUGIN_COLOR = ChatColor.YELLOW;
+	public static final String PLUGIN_TAG = ChatColor.DARK_GRAY+"["+PLUGIN_COLOR+"Entropy"+ChatColor.DARK_GRAY+"] "+ChatColor.RESET;
+	
 	public static Logger logger;
 	public static CoreUtil util;
 	
 	public static List<Town> towns = new ArrayList<Town>();
-	
+
 	public static Town getTownByID(int id){
 		for (Town t : towns){
 			if (t.getID()==id){
