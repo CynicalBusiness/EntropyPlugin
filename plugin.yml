@@ -8,7 +8,6 @@ authors: ['Wehttam664', 'callum2904', 'willynillyskin']
 prefix: ECore
 depend: 
   - DataShuttleMC
-  
 commands:
 
 permissions:
