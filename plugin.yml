@@ -8,7 +8,14 @@ authors: ['Wehttam664', 'callum2904', 'willynillyskin']
 prefix: ECore
 depend: 
   - DataShuttleMC
-  
+
 commands:
+  city:
+    description: 'Default Entropy Cities command.'
+    usage: '/city help'
+    permission: city.player
 
 permissions:
+  city.player:
+    default: false
+    description: 'Default city permissions.'

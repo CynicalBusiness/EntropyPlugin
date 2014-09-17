@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 
 import me.capit.ds_mc.DSMCMain;
 import me.capit.entropy.async.AsyncHandler;
+import me.capit.entropy.command.PlayerInput;
 import me.capit.entropy.util.*;
 
 import org.bukkit.ChatColor;
@@ -25,6 +26,7 @@ public class EntropyMain extends JavaPlugin {
 	public static Logger logger;
 	public static CoreUtil util;
 	public static AsyncHandler timer;
+	public static PlayerInput input;
 	
 	public static List<Town> towns = new ArrayList<Town>();
 
@@ -58,6 +60,10 @@ public class EntropyMain extends JavaPlugin {
 		saveDefaultConfig();
 		loadData();
 		logger.info("  "+towns.size()+" towns loaded.");
+		
+		logger.info("Registering commands and events...");
+		input = new PlayerInput(this);
+		this.getServer().getPluginCommand("city").setExecutor(input);
 		
 		logger.info("Loading async data...");
 		timer = new AsyncHandler(this);
