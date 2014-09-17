@@ -12,6 +12,7 @@ import java.util.UUID;
 import java.util.logging.Logger;
 
 import me.capit.ds_mc.DSMCMain;
+import me.capit.entropy.async.AsyncHandler;
 import me.capit.entropy.util.*;
 
 import org.bukkit.ChatColor;
@@ -23,6 +24,7 @@ public class EntropyMain extends JavaPlugin {
 	
 	public static Logger logger;
 	public static CoreUtil util;
+	public static AsyncHandler timer;
 	
 	public static List<Town> towns = new ArrayList<Town>();
 
@@ -56,6 +58,11 @@ public class EntropyMain extends JavaPlugin {
 		saveDefaultConfig();
 		loadData();
 		logger.info("  "+towns.size()+" towns loaded.");
+		
+		logger.info("Loading async data...");
+		timer = new AsyncHandler(this);
+		timer.runTaskTimerAsynchronously(this, 0L, 1200L); // One minute. 20*60.
+		logger.info("  Scheduled AsyncHandler successfully!");
 		
 		logger.info(DSMCMain.formFooter(EntropyMain.class));
 	}
