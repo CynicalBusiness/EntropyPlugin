@@ -1,5 +1,7 @@
 package me.capit.entropy.trading;
 
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -10,79 +12,107 @@ import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class TradeListener implements Listener{
-	
-	@EventHandler
-	public void onINVClick(InventoryClickEvent event){
-		//Check the inventory is a trading inv
-		
-		//check what they clicked
-		
-		//if it isnt equal to a "special item", return
-		
-		//if it is check what special item
-		
-		//add the special item to the list of trading items
-		
-		//cancel the event
+public class TradeListener implements Listener {
+
+	private CoreTrade coreTrade;
+
+	public TradeListener(CoreTrade trade) {
+		coreTrade = trade;
 	}
-	
+
 	@EventHandler
-	public void onINVClose(InventoryCloseEvent event){
-		//check the inventory is a trading inv
-		
-		//cancle the event
-		
-		//tell them to click the cancel button
+	public void onINVClick(InventoryClickEvent event) {
+		Trade trade = Trade.getTrade(event.getInventory());
+		if (trade == null)
+			return;
+
+		// check what they clicked
+
+		// if it isnt equal to a "special item", return
+
+		// if it is check what special item
+
+		// add the special item to the list of trading items
+
+		// cancel the event
 	}
-	
+
 	@EventHandler
-	public void onINVMoveItem(InventoryMoveItemEvent event){
-		//Check the inventory is a trading inv
-		
-		//check where they moved the item
-		
-		//if it is on their side of the trading inv
-		
-		//add to trading items list
-		
-		//else: cancel and give the item back
+	public void onINVClose(InventoryCloseEvent event) {
+		Trade trade = Trade.getTrade(event.getInventory());
+		if (trade == null)
+			return;
+		trade.cancelTrade();
+
+		if (trade.getPlayer1().getName().equalsIgnoreCase(((Player) event.getPlayer()).getName())) {
+			trade.getPlayer1().sendMessage(
+					coreTrade.getPrefix() + ChatColor.GRAY + "Trade Cancelled!");
+			trade.getPlayer2().sendMessage(
+					coreTrade.getPrefix() + ChatColor.GRAY + "Trade was cancelled by "
+							+ ChatColor.AQUA + trade.getPlayer1().getName());
+			return;
+		} else {
+			trade.getPlayer2().sendMessage(
+					coreTrade.getPrefix() + ChatColor.GRAY + "Trade Cancelled!");
+			trade.getPlayer1().sendMessage(
+					coreTrade.getPrefix() + ChatColor.GRAY + "Trade was cancelled by "
+							+ ChatColor.AQUA + trade.getPlayer2().getName());
+			return;
+		}
 	}
-	
+
 	@EventHandler
-	public void onINVPickup(InventoryPickupItemEvent event){
-		//Check the inventory is a trading inv
-		
-		//cancel the event
+	public void onINVMoveItem(InventoryMoveItemEvent event) {
+		Trade trade = Trade.getTrade(event.getDestination());
+		if (trade == null)
+			return;
+
+		// check where they moved the item
+
+		// if it is on their side of the trading inv
+
+		// add to trading items list
+
+		// else: cancel and give the item back
 	}
-	
+
 	@EventHandler
-	public void onQuit(PlayerQuitEvent event){
-		//Check if they where in a trade
-		
-		//Check the inventory is a trading inv
-		
-		//restore both players inventories safely
+	public void onINVPickup(InventoryPickupItemEvent event) {
+		Trade trade = Trade.getTrade(event.getInventory());
+		if (trade == null)
+			return;
+
+		event.setCancelled(true);
 	}
-	
+
 	@EventHandler
-	public void onDeath(PlayerDeathEvent event){
-		//Check if they where in a trade
-		
-		//Check the inventory is a trading inv
-		
-		//restore both players inventories safely
+	public void onQuit(PlayerQuitEvent event) {
+		Trade trade = Trade.getTrade(event.getPlayer());
+		if (trade == null)
+			return;
+
+		trade.cancelTrade();
 	}
-	
+
 	@EventHandler
-	public void onEntDamageByEnt(EntityDamageByEntityEvent event){
-		//Check if they where in a trade
-		
-		//Check the inventory is a trading inv
-		
-		//cancel the trade
-				
-		//restore both players inventories safely
+	public void onDeath(PlayerDeathEvent event) {
+		Trade trade = Trade.getTrade(event.getEntity());
+		if (trade == null)
+			return;
+
+		trade.cancelTrade();
+	}
+
+	@EventHandler
+	public void onEntDamageByEnt(EntityDamageByEntityEvent event) {
+		if (event.getEntity() instanceof Player) {
+
+			Trade trade = Trade.getTrade((Player) event.getEntity());
+			if (trade == null)
+				return;
+
+			trade.cancelTrade();
+		}
 	}
 
 }

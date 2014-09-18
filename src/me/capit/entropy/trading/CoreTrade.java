@@ -2,6 +2,7 @@ package me.capit.entropy.trading;
 
 import java.util.HashMap;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -14,6 +15,10 @@ public class CoreTrade {
 		player.getInventory().clear();
 		player.getInventory().setContents(CoreTrade.startingItems.get(player.getName()));
 		player.closeInventory();
+	}
+	
+	public String getPrefix(){
+		return ChatColor.AQUA + "[Trade] ";
 	}
 	
 }
