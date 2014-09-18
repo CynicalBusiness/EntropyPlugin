@@ -1,27 +1,26 @@
 package me.capit.entropy.trading;
 
-import java.util.HashMap;
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class TradeInventory {
 	
-	private HashMap<String, List<ItemStack>> trades;
-	
 	private Inventory inv;
 	
 	public TradeInventory(){
-		trades = new HashMap<String, List<ItemStack>>();
-		inv = Bukkit.createInventory(null, 54, ChatColor.DARK_RED + "Trading Inventory!");
+		inv = Bukkit.createInventory(null, InventoryType.CHEST, ChatColor.DARK_RED + "Trading Inventory!");
 	}
 	
 	public void setUpInventory(){
 		//Add starting option items - trade money, trade virtual item (e.g building)
+		
+		//money options
+		
+		//possibly add a military trade system for empire owners to trade equipment
 	}
 	
 	public void destory(){
@@ -34,6 +33,10 @@ public class TradeInventory {
 
 	public void removeTradingItem(Player player, ItemStack stack) {
 		
+	}
+	
+	public Inventory getInventory(){
+		return inv;
 	}
 
 }
