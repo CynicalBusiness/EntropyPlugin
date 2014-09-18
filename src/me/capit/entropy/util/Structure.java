@@ -12,8 +12,8 @@ public abstract class Structure implements Serializable {
 	private final Location loc;
 	private final int townID;
 	
-	//Should we add the building tier here?
-	public Structure(StructureData data, Location loc, int townID){
+	//Adding a temp tax system in. towntaxlevel * (1 + taxmodifier)
+	public Structure(StructureData data, Location loc, int townID, double taxModifier){
 		this.data = data;
 		this.loc = loc;
 		this.townID = townID;

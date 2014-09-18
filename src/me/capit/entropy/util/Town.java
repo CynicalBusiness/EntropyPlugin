@@ -18,11 +18,13 @@ public class Town implements Serializable {
 	private String name;
 	private boolean abandoned = false;
 	
-	// The List object is more adaptive to the situation and consumes less activation memory than ArrayList.
 	private List<Structure> structures = new ArrayList<Structure>();
 	private List<UUID> players = new ArrayList<UUID>();
 	
-	// I removed it but it was going to be for how much storage each town has used.
+	//With the tax system, the town mayor or what will be able to set different scale
+	//taxes based on how much money a person earns (for their job or whatever they earn money from)
+	//e.g. players who earn 2K or less a minecraft day get 0% tax. earn more than 100K has 40% tax
+	//not sure how we should create this, i was thinking a map but im not sure...
 	public Town(EntropyMain plugin, UUID owner, String name){
 		this.plugin = plugin;
 		this.owner = owner;
