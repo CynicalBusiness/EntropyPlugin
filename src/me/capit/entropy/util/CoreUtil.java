@@ -33,6 +33,7 @@ public class CoreUtil {
 	}
 
 	public boolean structureFits(Structure structure, Location loc) {
+		@SuppressWarnings("unused")
 		World world = loc.getWorld();
 		
 		return false;
