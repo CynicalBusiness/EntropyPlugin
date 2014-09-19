@@ -33,6 +33,7 @@ public class EntropyMain extends JavaPlugin {
 	public static CoreUtil util;
 	public static AsyncHandler timer;
 	public static PlayerInput input;
+	public static CoreTrade trade;
 
 	public static List<Town> towns = new ArrayList<Town>();
 
@@ -53,6 +54,10 @@ public class EntropyMain extends JavaPlugin {
 		}
 		return null;
 	}
+	
+	public static CoreTrade getCoreTrade(){
+		return trade;
+	}
 
 	@Override
 	public void onEnable() {
@@ -71,7 +76,7 @@ public class EntropyMain extends JavaPlugin {
 		input = new PlayerInput(this);
 
 		PluginManager pm = getServer().getPluginManager();
-		pm.registerEvents(new TradeListener(new CoreTrade()), this); // will
+		pm.registerEvents(new TradeListener(trade), this); // will
 																		// this
 																		// work?
 																		// creating

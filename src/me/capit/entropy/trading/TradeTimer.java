@@ -5,10 +5,10 @@ import org.bukkit.scheduler.BukkitTask;
 public class TradeTimer implements Runnable {
 
 	private BukkitTask task;
-	private Trade trade;
+	//private Trade trade;
 	
 	public TradeTimer(Trade trade) {
-		this.trade = trade;
+		//this.trade = trade;
 	}
 
 	public void scheduleTask(BukkitTask task) {
