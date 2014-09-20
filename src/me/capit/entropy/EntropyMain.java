@@ -18,7 +18,6 @@ import me.capit.entropy.util.CoreUtil;
 import me.capit.entropy.util.Town;
 
 import org.bukkit.ChatColor;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class EntropyMain extends JavaPlugin {
@@ -66,8 +65,6 @@ public class EntropyMain extends JavaPlugin {
 
 		logger.info("Registering commands and events...");
 		input = new PlayerInput(this);
-
-		PluginManager pm = getServer().getPluginManager();
 		
 		this.getServer().getPluginCommand("city").setExecutor(input);
 
