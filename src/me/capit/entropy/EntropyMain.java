@@ -123,12 +123,7 @@ public class EntropyMain extends JavaPlugin {
 		if (fos != null) {
 			// List is not serializeable. D:<
 			Town[] townsArray = towns.toArray(new Town[] {});
-			byte[] data = DSMCMain.shuttle.serializeObject(townsArray); // This
-																		// is
-																		// why
-																		// we
-																		// have
-																		// DSMC.
+			byte[] data = DSMCMain.shuttle.serializeObject(townsArray); 
 			try {
 				fos.write(data);
 				fos.flush();
