@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -18,6 +19,7 @@ import me.capit.entropy.util.CoreUtil;
 import me.capit.entropy.util.Town;
 
 import org.bukkit.ChatColor;
+import org.bukkit.block.Block;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class EntropyMain extends JavaPlugin {
@@ -31,6 +33,8 @@ public class EntropyMain extends JavaPlugin {
 	public static PlayerInput input;
 
 	public static List<Town> towns = new ArrayList<Town>();
+	
+	public static HashMap<UUID, Block[]> corners = new HashMap<UUID, Block[]>();
 
 	public static Town getTownByID(int id) {
 		for (Town t : towns) {

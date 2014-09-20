@@ -8,45 +8,18 @@ import java.io.Serializable;
 
 import me.capit.ds_mc.DSMCMain;
 
-import org.bukkit.Bukkit;
-import org.bukkit.World;
-import org.bukkit.block.Block;
+public class Blueprint implements Serializable {
+	private static final long serialVersionUID = -7801407464779177668L;
 
-public class Blueprint {
-	
-	class BadDataFormatException extends Exception{
+	public class BadDataFormatException extends Exception{
 		private static final long serialVersionUID = -5641551435152447364L;
 		public BadDataFormatException(String msg){super(msg);}
-	}
-	
-	class SerialBlock implements Serializable{
-		private static final long serialVersionUID = 910504721830373628L;
-		
-		private String world;
-		private int x,y,z;
-		
-		public SerialBlock(String world, int x, int y, int z){
-			this.world = world;
-			this.x=x;this.y=y;this.z=z;
-		}
-		
-		public Block getBlock(){
-			World w = Bukkit.getWorld(world);
-			return w.getBlockAt(x, y, z);
-		}
 	}
 	
 	public SerialBlock[][] blocks = new SerialBlock[][]{};
 	
 	private File blueprint;
 	
-	/**
-	 * Creates a blueprint from a file. If the file does not exist, it is created.
-	 * @param blueprint The file to load from.
-	 * @throws IllegalArgumentException If the file passed is not valid (not a .print or is a directory).
-	 * @throws IOException Exceptions thrown from the input stream.
-	 * @throws BadDataFormatException If the data on the file is corrupt or not correct.
-	 */
 	public Blueprint(File blueprint) throws IllegalArgumentException, IOException, BadDataFormatException{
 		this.blueprint = blueprint;
 		if (!blueprint.exists()){
@@ -75,12 +48,10 @@ public class Blueprint {
 		}
 	}
 	
-	/**
-	 * Saved the data stored in this blueprint to disk in the file it was loaded from.
-	 * <br><br>
-	 * Create a new Blueprint object with a non-existant file, modify the blocks, then save in
-	 * order to create a new blueprint file.
-	 */
+	public Blueprint(SerialBlock[][] blocks){
+		this.blocks = blocks;
+	}
+	
 	public void save(){
 		FileOutputStream fos = null;
 		try {
