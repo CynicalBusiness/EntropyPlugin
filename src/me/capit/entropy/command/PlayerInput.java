@@ -24,7 +24,7 @@ public class PlayerInput implements CommandExecutor {
 					List<String> tArgs = Arrays.asList(args);
 					tArgs.remove(0);
 					handleAdminCommands(s,cmd,lbl,tArgs.toArray(new String[]{}));
-				} else if(s.hasPermission("city.player")) {
+				} else if(!args[0].equalsIgnoreCase("admin") && s.hasPermission("city.player")) {
 					handlePlayerCommands(s,cmd,lbl,args);
 				} else {
 					Message.sendError((Player) s, "You do not have permission for this command!");
