@@ -21,7 +21,7 @@ public class Trade {
 		this.player2 = player2;
 		this.inv = inv;
 		this.trade = trade;
-
+		trades.add(this);
 		startTrade(player1, player2);
 	}
 
@@ -64,10 +64,10 @@ public class Trade {
 
 	public void startTrade(Player player1, Player player2) {
 		player1.closeInventory();
-//		player2.closeInventory();
+		player2.closeInventory();
 
 		player1.openInventory(getInventory());
-//		player2.openInventory(getInventory());
+		player2.openInventory(getInventory());
 
 		inv.setUpInventory();
 	}

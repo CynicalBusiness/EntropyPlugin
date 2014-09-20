@@ -28,8 +28,16 @@ public class TradeListener implements Listener {
 		
 		Player player = (Player) event.getWhoClicked();
 		player.sendMessage("" + event.getSlot());
-
-		// check what they clicked
+		int slot = event.getSlot();
+		
+		
+		//convert into 3 lists.
+		//right side <-- for player 1 to use
+		//left side <-- player 2 to use
+		//middle <-- unusable slots by either.
+		if(slot == 4 || slot == 13 || slot == 22 || slot == 31 || slot == 40 || slot == 49){
+			event.setCancelled(true);
+		}
 
 		// if it isnt equal to a "special item", return
 

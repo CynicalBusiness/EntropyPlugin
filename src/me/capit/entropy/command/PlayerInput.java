@@ -2,6 +2,7 @@ package me.capit.entropy.command;
 
 import me.capit.entropy.EntropyMain;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,9 +15,7 @@ public class PlayerInput implements CommandExecutor {
 	
 	public boolean onCommand(CommandSender s, Command cmd, String lbl, String[] args) {
 		if (lbl.equalsIgnoreCase("city")){
-			if(args.length == 1){
-				Trade trade = new Trade(EntropyMain.trade, new TradeInventory(plugin), (Player) s, null);
-			}
+				Trade trade = new Trade(EntropyMain.trade, new TradeInventory(plugin), (Player) s, Bukkit.getPlayer(args[0]));
 			return true;
 		}
 		return false;
