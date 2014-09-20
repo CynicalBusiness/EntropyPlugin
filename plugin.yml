@@ -14,8 +14,11 @@ commands:
     description: 'Default Entropy Cities command.'
     usage: '/city help'
     permission: city.player
+  trade:
+    description: 'Default Entropy Trade command'
+    usage: '/trade help'
 
 permissions:
   city.player:
-    default: true
+    default: false
     description: 'Default city permissions. '

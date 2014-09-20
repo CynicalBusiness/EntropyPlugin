@@ -14,9 +14,6 @@ import java.util.logging.Logger;
 import me.capit.ds_mc.DSMCMain;
 import me.capit.entropy.async.AsyncHandler;
 import me.capit.entropy.command.PlayerInput;
-import me.capit.entropy.trading.CoreTrade;
-import me.capit.entropy.trading.Trade;
-import me.capit.entropy.trading.TradeListener;
 import me.capit.entropy.util.CoreUtil;
 import me.capit.entropy.util.Town;
 
@@ -33,7 +30,6 @@ public class EntropyMain extends JavaPlugin {
 	public static CoreUtil util;
 	public static AsyncHandler timer;
 	public static PlayerInput input;
-	public static CoreTrade trade;
 
 	public static List<Town> towns = new ArrayList<Town>();
 
@@ -54,10 +50,6 @@ public class EntropyMain extends JavaPlugin {
 		}
 		return null;
 	}
-	
-	public static CoreTrade getCoreTrade(){
-		return trade;
-	}
 
 	@Override
 	public void onEnable() {
@@ -76,8 +68,7 @@ public class EntropyMain extends JavaPlugin {
 		input = new PlayerInput(this);
 
 		PluginManager pm = getServer().getPluginManager();
-		pm.registerEvents(new TradeListener(trade), this);
-
+		
 		this.getServer().getPluginCommand("city").setExecutor(input);
 
 		logger.info("Loading async data...");
@@ -96,7 +87,6 @@ public class EntropyMain extends JavaPlugin {
 		saveData();
 
 		logger.info("Safely ending trades...");
-		Trade.endAllTrades();
 
 		logger.info(DSMCMain.formFooter(EntropyMain.class));
 	}
