@@ -17,7 +17,9 @@ public class PlayerInput implements CommandExecutor {
 	
 	public boolean onCommand(CommandSender s, Command cmd, String lbl, String[] args) {
 		if (lbl.equalsIgnoreCase("city")){
-			
+			if(args.length == 1){
+				Trade trade = new Trade(EntropyMain.trade, new TradeInventory(plugin), (Player) s, null);
+			}
 			return true;
 		}
 		return false;

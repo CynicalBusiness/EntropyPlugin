@@ -17,5 +17,5 @@ commands:
 
 permissions:
   city.player:
-    default: false
+    default: true
     description: 'Default city permissions. '

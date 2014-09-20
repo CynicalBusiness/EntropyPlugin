@@ -76,20 +76,7 @@ public class EntropyMain extends JavaPlugin {
 		input = new PlayerInput(this);
 
 		PluginManager pm = getServer().getPluginManager();
-		pm.registerEvents(new TradeListener(trade), this); // will
-																		// this
-																		// work?
-																		// creating
-																		// a new
-																		// coretrade
-																		// within
-																		// the
-																		// new
-																		// tradelistener?
-																		// i
-																		// think
-																		// it
-																		// should
+		pm.registerEvents(new TradeListener(trade), this);
 
 		this.getServer().getPluginCommand("city").setExecutor(input);
 

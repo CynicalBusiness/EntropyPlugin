@@ -25,26 +25,6 @@ public class Trade {
 		startTrade(player1, player2);
 	}
 
-	private enum TradeEndReason {
-
-		CANCEL("&7The trade has been canceled by &b<player>&7!"), COMPLETE(
-				"&7The trade has been completed!"), LOGOUT(
-				"&7Player &b<player> &7has logged out so the trade has ended!"), KILLED(
-				"&7Player &b<player> &7was killed, trade ended!"), RESTART(
-				"&7Sorry to cut you short but the server is restarting!!!");
-
-		private String reason;
-
-		TradeEndReason(String string) {
-			string = reason;
-		}
-
-		public String getReason() {
-			return reason;
-		}
-
-	}
-
 	public static Trade getTrade(Inventory inventory) {
 		for (Trade trade : trades) {
 			if (trade.getInventory().getName().equalsIgnoreCase(inventory.getName())) {
@@ -84,14 +64,14 @@ public class Trade {
 
 	public void startTrade(Player player1, Player player2) {
 		player1.closeInventory();
-		player2.closeInventory();
+//		player2.closeInventory();
 
 		player1.openInventory(getInventory());
-		player2.openInventory(getInventory());
+//		player2.openInventory(getInventory());
 
 		inv.setUpInventory();
 	}
-
+	
 	public void addTradingItem(Player player, ItemStack stack) {
 
 	}
@@ -104,8 +84,8 @@ public class Trade {
 	public static void endAllTrades() {
 		for (Trade trade : trades) {
 			trade.cancelTrade();
-			String msg = ChatColor.translateAlternateColorCodes('&',
-					TradeEndReason.RESTART.getReason());
+			//dont think these are needed since i dont think they'll have time to read it :D
+			String msg = ChatColor.GRAY + "Trade has been ended due to the server restarting!";
 			trade.player1.sendMessage(msg);
 			trade.player2.sendMessage(msg);
 		}
