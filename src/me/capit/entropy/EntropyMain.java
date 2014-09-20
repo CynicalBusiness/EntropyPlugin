@@ -49,6 +49,15 @@ public class EntropyMain extends JavaPlugin {
 		}
 		return null;
 	}
+		
+	public static Town getTownByName(String name){
+		for (Town t : towns){
+			if (t.getName().equalsIgnoreCase(name)){
+				return t;
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public void onEnable() {

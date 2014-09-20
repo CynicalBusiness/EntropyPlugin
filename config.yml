@@ -1,11 +1,26 @@
-buildings:
+default_city_names: # When a town is made, it recieves one of these names. It can be renamed later.
+  # Names adapted from real cities. Feel free to add some.
+  - Riverside
+  - Capetown
+  - Lakepoint
+  - New Novogrod
+  - New London
+  - New Seattle
+  - Neo Kyoto # Heh.
+  - New Boston
+  - Mountain Hights
+  # Other names.
+  - Capi'teka
+  - Fyedor
+  - Kyamar
+buildings: # Will load resource costs from schematic!
   Road_Dirt:
     schematic: road/dirt
     boundWidth: 5
     boundLength: 5
     road: true
   House_Small_1:
-    schematic: house/small/1 # Will load resource costs from schematic!
+    schematic: house/small/1 
     boundWidth: 7
     boundLength: 9
     road: true
