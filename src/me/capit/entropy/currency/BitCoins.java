@@ -6,10 +6,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Token implements CommandExecutor {
+public class BitCoins implements CommandExecutor{
 	
 	public static String getPrefix(){
-		return ChatColor.BLUE + "[Tokens] ";
+		return ChatColor.BLUE + "[BitCoins] ";
 	}
 
 	public static int getTokens(String player) {
@@ -78,6 +78,7 @@ public class Token implements CommandExecutor {
 					return true;
 				}
 			}
+			
 		}
 		return false;
 	}
