@@ -36,7 +36,6 @@ public class Token implements CommandExecutor {
 			
 	}
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (label.equalsIgnoreCase("tokens")) {
 			if (sender instanceof Player) {
