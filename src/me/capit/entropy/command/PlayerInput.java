@@ -6,9 +6,7 @@ import java.util.List;
 import me.capit.entropy.EntropyMain;
 import me.capit.entropy.Message;
 import me.capit.entropy.blueprints.Blueprint;
-import me.capit.entropy.util.CoreUtil;
 
-import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -61,7 +59,7 @@ public class PlayerInput implements CommandExecutor {
 			} else if (args[1].equalsIgnoreCase("formBlueprint")){
 				Block[] corners = EntropyMain.corners.get(((Player) s).getUniqueId());
 				if (corners[0]!=null && corners[1]!=null){
-					Blueprint print = new Blueprint(plugin.util.getBlocksInArea(corners[0].getLocation(),corners[1].getLocation()));
+					Blueprint print = new Blueprint(EntropyMain.util.getBlocksInArea(corners[0].getLocation(),corners[1].getLocation()));
 					print.save();
 				}
 			}
