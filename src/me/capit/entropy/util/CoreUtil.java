@@ -6,6 +6,7 @@ import java.util.List;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.util.Vector;
 
 import me.capit.entropy.EntropyMain;
 import me.capit.entropy.blueprints.SerialBlock;
@@ -41,6 +42,19 @@ public class CoreUtil {
 		World world = loc.getWorld();
 		
 		return false;
+	}
+	
+	public Location closestToOrigin(Location loc1, Location loc2){
+		Vector origin = new Vector();
+		Vector v1 = new Vector(loc1.getBlockX(),loc1.getBlockY(),loc1.getBlockZ());
+		Vector v2 = new Vector(loc2.getBlockX(),loc2.getBlockY(),loc2.getBlockZ());
+		double v1M = v1.subtract(origin).length();
+		double v2M = v2.subtract(origin).length();
+		if (v1M<v2M){
+			return loc1;
+		} else {
+			return loc2;
+		}
 	}
 	
 	public SerialBlock[][] getBlocksInArea(Location corner1, Location corner2){
