@@ -17,5 +17,17 @@ public class User {
 		this.tokens = tokens;
 		this.bitcoins = bitcoins;
 	}
+	
+	public UUID getUniqueId(){
+		return this.uuid;
+	}
+	
+	public int getTokens(){
+		return this.tokens;
+	}
+	
+	public int getBitCoins(){
+		return this.bitcoins;
+	}
 
 }
